@@ -12,7 +12,13 @@ const Slider = () => {
   );
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
+      () => {
+        if(index < byDateDesc.length - 1) {
+          setIndex(index + 1);
+        } else {
+          setIndex(0);
+        }
+      },
       5000
     );
   };
