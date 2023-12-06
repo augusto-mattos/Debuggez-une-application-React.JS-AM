@@ -14,9 +14,9 @@ const EventList = () => {
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const filteredEvents = (
-    (!type
-      ? data?.events
-      : data?.events) || []
+    (!type 
+      ? data?.events // si aucun type est selectioné, tous les cards sont affichés
+      : data?.events.filter(event => event.type === type)) || [] // dans le cas contraire, seuelement les event.type qui correspondent au type selectionné sont affichés
   ).filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
