@@ -24,8 +24,12 @@ const Select = ({
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
       <div className="Select">
-        <ul>
-          <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
+        <ul onClick={(e) => {
+            e.preventDefault();
+            setCollapsed(!collapsed);
+          }}
+        >
+          <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"} >
             {value || (!titleEmpty && "Toutes")}
           </li>
           {!collapsed && (
