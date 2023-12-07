@@ -13,6 +13,7 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+  
   const filteredEvents = (
     (!type 
       ? data?.events // si aucun type est selectioné, tous les cards sont affichés
@@ -26,12 +27,18 @@ const EventList = () => {
     }
     return false;
   });
+  
+  const sortFilteredEvents = filteredEvents.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+  
   const changeType = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
   };
+
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
+  
   const typeList = new Set(data?.events.map((event) => event.type));
+  
   return (
     <>
       {error && <div>An error occured</div>}
@@ -45,7 +52,7 @@ const EventList = () => {
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
           <div id="events" className="ListContainer">
-            {filteredEvents.map((event) => (
+            {sortFilteredEvents.map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
                   <EventCard
