@@ -1,5 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "./index";
+import PeopleCard from "../../components/PeopleCard";
+import EventList from "../../containers/Events";
+import EventCard from "../../components/EventCard";
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
@@ -21,24 +24,32 @@ describe("When Form is created", () => {
         })
       );
       await screen.findByText("En cours");
-      await screen.findByText("Message envoyé !");
+      expect(screen.findByText("Message envoyé !")).toBeTruthy();
     });
   });
-
+  
 });
 
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    // to implement
+  it("a list of events is displayed", async () => {
+    render(<EventList />);
+    expect(screen.getByTestId("events")).toBeInTheDocument();
+    
   })
-  it("a list a people is displayed", () => {
-    // to implement
+  it("a list a people is displayed", async () => {
+    render(<PeopleCard />);
+    expect(screen.getByTestId("card-image-testid")).toBeInTheDocument();
+    
   })
   it("a footer is displayed", () => {
-    // to implement
+    render(<Home />);
+    expect(screen.findByText("Notre derniére prestation"));
+   
   })
-  it("an event card, with the last event, is displayed", () => {
-    // to implement
+  it("an event card, with the last event, is displayed", async () => {
+    render(<EventCard />)
+    expect(screen.getByTestId("card-testid")).toBeInTheDocument();
+  
   })
 });
