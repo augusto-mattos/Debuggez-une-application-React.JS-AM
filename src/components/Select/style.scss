@@ -10,10 +10,19 @@
   }
   &.large {
     width: 424px;
+    @media (max-width: 800px) {
+      width: 100%;
+    }
     .Select {
       width: 442px;
+      @media (max-width: 800px) {
+        width: 100%;
+      }
       ul {
         width: 442px;
+        @media (max-width: 800px) {
+          width: 100%;
+        }
       }
     }
   }
