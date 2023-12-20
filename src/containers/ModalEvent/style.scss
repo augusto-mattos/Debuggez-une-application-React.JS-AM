@@ -12,6 +12,9 @@
       width: 100%;
     }
   }
+  @media (max-width: 800px) {
+      width: unset;
+  }
   &__title {
     position: absolute;
     background-color: $primary;
