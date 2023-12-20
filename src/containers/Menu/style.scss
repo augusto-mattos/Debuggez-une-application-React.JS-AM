@@ -3,7 +3,7 @@
 header {
   height: 112px;
   @media (max-width: 800px) {
-    height: 212px;
+    height: 175px;
     margin-bottom: 44px;
   }
 }
@@ -28,6 +28,7 @@ nav {
     margin: 0;
     @media (max-width: 800px) {
       justify-content: space-around;
+      width: unset;
     }
     li {
       list-style: none;

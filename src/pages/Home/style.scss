@@ -122,7 +122,8 @@ p {
   display: flex;
   justify-content: space-around;
   @media (max-width: 800px) {
-    flex-direction: column-reverse  ;
+    flex-direction: column-reverse;
+    padding-right: 16px;
   }
 }
 .col {
